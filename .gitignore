@@ -1,0 +1,18 @@
+# Python caches and local environments
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Local credentials and runtime logs
+.env
+.env.*
+!.env.example
+*.log
+
+# macOS metadata
+.DS_Store
+._*
