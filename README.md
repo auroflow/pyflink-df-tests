@@ -76,22 +76,21 @@ $FLINK_HOME/bin/flink run -py 03_pick_list.py
 $FLINK_HOME/bin/flink run -py 04_windows_temporal.py
 ```
 
-For the fifth job, supply your OpenAI-compatible service's full
-`/chat/completions` endpoint, a model, and an API key:
+For the fifth job, set the following environment variables to your
+OpenAI-compatible service's full `/chat/completions` endpoint, model, and API key:
 
 ```bash
-read -r -p "Chat completions endpoint: " OPENAI_ENDPOINT
-read -r -p "Model: " OPENAI_MODEL
-read -r -s -p "API key: " OPENAI_API_KEY
-printf '\n'
-export OPENAI_ENDPOINT OPENAI_MODEL OPENAI_API_KEY
+export OPENAI_ENDPOINT='<your-chat-completions-endpoint>'
+export OPENAI_MODEL='<your-model>'
+export OPENAI_API_KEY='<your-api-key>'
 $FLINK_HOME/bin/flink run -py 05_openai.py
 unset OPENAI_API_KEY
 ```
 
-For the sixth job, start Kafka first:
+For the sixth job, ensure your Docker daemon is running, then start Kafka:
 
 ```bash
+docker info
 bash kafka.sh start
 $FLINK_HOME/bin/flink run -py 06_connectors.py
 ```
